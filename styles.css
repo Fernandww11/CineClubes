@@ -1,0 +1,275 @@
+/* Global Styles */
+body {
+  background-color: #000 !important;
+  color: #fff !important;
+  font-family: "Arial", sans-serif;
+}
+
+.max-width-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo Grid */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 8px);
+  grid-template-rows: repeat(3, 8px);
+  gap: 2px;
+  width: 30px;
+  height: 30px;
+}
+
+.logo-square {
+  background-color: #fff;
+  border-radius: 1px;
+}
+
+.logo-square:nth-child(1),
+.logo-square:nth-child(2),
+.logo-square:nth-child(4),
+.logo-square:nth-child(5) {
+  background-color: #28a745;
+}
+
+/* Navigation */
+.navbar {
+  padding: 1rem 0;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin: 0 0.5rem;
+}
+
+.nav-link.active {
+  color: #fff !important;
+}
+
+.search-input {
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  width: 200px;
+}
+
+.search-input::placeholder {
+  color: #ccc;
+}
+
+.search-input:focus {
+  background-color: transparent;
+  border-color: #28a745;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+  background-color: transparent;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0.75rem 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: transparent;
+  border-color: #28a745;
+  color: #fff;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control::placeholder {
+  color: #999;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  border-color: #28a745;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: 100px 100px;
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.film-strip {
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    #333 0%,
+    #333 20%,
+    transparent 20%,
+    transparent 40%,
+    #333 40%,
+    #333 60%,
+    transparent 60%,
+    transparent 80%,
+    #333 80%
+  );
+  border-radius: 4px;
+}
+
+.popcorn-icon,
+.camera-icon {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Cards */
+.movie-card,
+.event-card,
+.campus-card {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.movie-card:hover,
+.event-card:hover,
+.campus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.movie-poster,
+.event-image,
+.campus-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-info,
+.event-info,
+.campus-info {
+  padding: 1.5rem;
+}
+
+.movie-title,
+.event-title,
+.campus-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.movie-details,
+.event-details,
+.campus-coordinator {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-decoration {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search-input {
+    width: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
