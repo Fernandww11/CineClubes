@@ -11,11 +11,12 @@ body {
 }
 
 
-.m-plus-rounded-1c-regular {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+.bowlby-one-sc-regular {
+  font-family: "Bowlby One SC", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+
 
 /* Navigation */
 .navbar {
@@ -23,10 +24,11 @@ body {
 }
 
 .nav-link {
-  font-weight: 600;
+  font-family: "Bowlby One SC", sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   margin: 0 0.5rem;
+  margin-left: 20px;
 }
 
 .nav-link.active {
@@ -92,6 +94,8 @@ body {
 /* Hero Section */
 
 .static-img-wrapper img.static-hero-img {
+  margin-top: 150px;
+  max-height: 350px;
   border-radius: 12px;
   width: 100%;
   display: block;
@@ -105,17 +109,6 @@ body {
   position: relative;
   overflow: hidden;
 
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
-  background-size: 100px 100px;
-  animation: float 20s infinite linear;
-}
 
 @keyframes float {
   0% {
@@ -148,12 +141,11 @@ body {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  font-family: 'Arial Black', Arial, sans-serif;
+  font-family: "Bowlby One SC", sans-serif;
 }
 
 .cine-text {
   font-size: 6rem;
-  font-weight: bold;
   line-height: 1;
   letter-spacing: 2px;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
@@ -165,14 +157,13 @@ body {
   color:#ff1c14;
   position: absolute;
   left: 270px; /* Adjust this value for perfect horizontal centering between CINE and IFMG */
-  top: 37px;  /* Adjust this value for perfect vertical centering */
+  top: 22px;  /* Adjust this value for perfect vertical centering */
   z-index: 2;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
 .if-text {
   font-size: 6rem;
-  font-weight: bold;
   color:#08bf67;
   line-height: 1;
   letter-spacing: 2px;
