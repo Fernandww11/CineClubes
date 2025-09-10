@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-  background-color: #000 !important;
+  background-color: #000000 !important;
   color: #fff !important;
   font-family: "Arial", sans-serif;
 }
@@ -20,20 +20,29 @@ body {
 
 /* Navigation */
 .navbar {
+  background-color: #000 !important;
   padding: 1rem 0;
 }
 
+.navbar-nav {
+  display: flex;
+  margin-left: 80px;
+
+  width: 100%;
+  gap: 1.6rem; /* Space between links */
+}
+
+
 .nav-link {
+  color: #b6b6b6;
   font-family: "Bowlby One SC", sans-serif;
   font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  margin: 0 0.5rem;
+  letter-spacing: 0.5px;  
+  margin: 0 2rem;
   margin-left: 20px;
 }
 
-.nav-link.active {
-  color: #fff !important;
-}
+
 
 .search-input {
   background-color: transparent;
@@ -102,7 +111,7 @@ body {
 }
 
 .hero-section {
-  background: url('https://uploads.onecompiler.io/43vms4uzs/43vmt4rnv/photo-1489599849927-2ee91cede3ba.jfif') center center/cover no-repeat;
+  background: url('img/upscalemedia-transformed.png') center center/cover no-repeat;
   min-height: 800px;
   display: flex;
   align-items: flex-start;
@@ -199,9 +208,12 @@ body {
 .movie-poster,
 .event-image,
 .campus-image {
-  width: 100%;
-  height: 300px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
+  display: block;
+  margin: 0 auto 0.5rem auto;
+  border-radius: 8px;
 }
 
 .movie-info,
