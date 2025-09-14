@@ -90,3 +90,64 @@ function showLoading() {
 document.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", showLoading)
 })
+
+
+// Navegação por botões, arrastar e teclas
+const carousel = document.getElementById('carousel');
+const btnLeft = document.querySelector('.carousel-nav.left');
+const btnRight = document.querySelector('.carousel-nav.right');
+
+// quanto scrollar por clique (pode ajustar)
+const SCROLL_AMOUNT = Math.round(window.innerWidth * 0.6);
+
+btnLeft.addEventListener('click', ()=> {
+  carousel.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+});
+btnRight.addEventListener('click', ()=> {
+  carousel.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+});
+
+// teclas de seta
+window.addEventListener('keydown', (e)=>{
+  if(['ArrowLeft','ArrowRight'].includes(e.key)){
+    e.preventDefault();
+    if(e.key === 'ArrowLeft') carousel.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' });
+    else carousel.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' });
+  }
+});
+
+// Drag para desktop
+let isDown = false, startX, scrollLeft;
+carousel.addEventListener('mousedown', (e) => {
+  isDown = true;
+  carousel.classList.add('dragging');
+  startX = e.pageX - carousel.offsetLeft;
+  scrollLeft = carousel.scrollLeft;
+});
+carousel.addEventListener('mouseleave', () => {
+  isDown = false;
+  carousel.classList.remove('dragging');
+});
+carousel.addEventListener('mouseup', () => {
+  isDown = false;
+  carousel.classList.remove('dragging');
+});
+carousel.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - carousel.offsetLeft;
+  const walk = (x - startX) * 1.2; // sensibilidade
+  carousel.scrollLeft = scrollLeft - walk;
+});
+
+// Touch (móveis)
+let startTouchX = 0, startTouchScroll = 0;
+carousel.addEventListener('touchstart', (e)=>{
+  startTouchX = e.touches[0].clientX;
+  startTouchScroll = carousel.scrollLeft;
+});
+carousel.addEventListener('touchmove', (e)=>{
+  const x = e.touches[0].clientX;
+  const delta = (x - startTouchX) * 1.2;
+  carousel.scrollLeft = startTouchScroll - delta;
+});
