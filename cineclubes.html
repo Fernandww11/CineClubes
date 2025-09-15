@@ -9,6 +9,54 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
     </style>
+        <style>
+            :root{
+      --bg:#0b0b0c;           /* preto bem escuro */
+      --panel:#0f1113;        /* painel escuro */
+      --card:#111418;         /* cartão */
+      --muted:#9aa2a6;        /* texto secundário */
+      --accent:#e50914;       /* vermelho Netflix-like */
+      --glass: rgba(255,255,255,0.03);
+    }
+    
+    body{ background: var(--bg); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    
+    .carousel {
+      display: flex;
+      gap: 2.5rem;   /* AQUI aumenta o espaço entre os cards */
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 8px;
+    }
+    
+    /* Cartões iguais ao que mandei antes */
+    .card-item {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      min-width: 400px;
+      max-width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.7);
+      scroll-snap-align: start;
+      transition: transform .25s ease, box-shadow .25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-container {
+            width: 1600px;
+            margin: 0 auto;
+            padding: 20px 20px;
+        }
+    
+    .page-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    
+        </style>
 </head>
 <body class="bg-dark text-white">
        <!-- Navigation -->
@@ -48,21 +96,22 @@
 
         <!-- Programação -->
 
-        <section class="mb-5">
-            <h2 class="h3 fw-bold mb-4">PROGRAMAÇÃO</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="movie-card">
-                        <img src="/placeholder.svg?height=300&width=200" alt="Interstellar" class="movie-poster">
-                        <div class="movie-info">
-                            <h3 class="movie-title">INTERSTELLAR</h3>
-                            <p class="movie-details">Data: 15/03/2024<br>Horário: 19:00<br>Local: Auditório A</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="main-container">
+            <h2 class="page-title">PROGRAMAÇÃO</h2>
         </section>
 
+            <div class="container py-5">
+                <div class="carousel" id="carousel">
+           <!-- Card 1 -->
+           <article class="card-item">
+             <img src="img/zstvmu042i1c1.jpg" alt="Ribeirão das Neves">
+             <div class="card-body">
+               <h5>Interstellar</h5>
+               <p class="small mb-0">Data: 15/03/2024</p>
+               <p class="small mb-0">Horário: 19:00</p>
+               <p class="small mb-0">Local: Auditório A</p>
+             </div>
+           </article>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
