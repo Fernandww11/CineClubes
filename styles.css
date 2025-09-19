@@ -17,6 +17,38 @@ body {
   font-style: normal;
 }
 
+.form-select, .form-control {
+  background-color: #000000 !important;
+  color: #fff !important;
+}
+
+.container-fluid, .row, .register-form {
+  background-color: #000 !important;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  z-index: 100;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.back-arrow img {
+  display: block;
+  filter: drop-shadow(1px 1px 5px #000);
+}
+.register-form {
+ width: 600px;
+  margin: 0 auto;
+}
+.small-login-form {
+  max-width:500px;
+  margin: 0 auto;
+  padding: 0;
+}
+
 
 /* Navigation */
 .navbar {
