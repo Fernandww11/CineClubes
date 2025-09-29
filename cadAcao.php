@@ -330,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button type="submit" class="btn btn-primary btn-lg me-3">
                         <i class="fas fa-save me-2"></i>Cadastrar Ação
                     </button>
-                    <a href="visualizar.php" class="btn btn-secondary btn-lg">
+                    <a href="cineclubes.php" class="btn btn-secondary btn-lg">
                         <i class="fas fa-eye me-2"></i>Ver Ações Cadastradas
                     </a>
                 </div>

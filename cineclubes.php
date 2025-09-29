@@ -254,7 +254,7 @@ function obterCorTipo($tipo) {
             </h1>
             
             <div class="text-center mb-4">
-                <a href="index.php" class="btn btn-primary btn-lg">
+                <a href="cadAcao.php" class="btn btn-primary btn-lg">
                     <i class="fas fa-plus me-2"></i>Cadastrar Nova Ação
                 </a>
             </div>
@@ -396,7 +396,7 @@ function obterCorTipo($tipo) {
             <?php endif; ?>
             
             <div class="text-center mt-4">
-                <a href="index.php" class="btn btn-primary btn-lg">
+                <a href="cadAcao.php" class="btn btn-primary btn-lg">
                     <i class="fas fa-arrow-left me-2"></i>Voltar ao Cadastro
                 </a>
             </div>
