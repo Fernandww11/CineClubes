@@ -246,6 +246,27 @@ function obterCorTipo($tipo) {
     </style>
 </head>
 <body>
+    <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">INÍCIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">SOBRE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">ACESSO</a>
+                    </li>
+
+                </ul>
+                
+            </div>
     <div class="container">
         <div class="container-main">
             <h1 class="header-title">
