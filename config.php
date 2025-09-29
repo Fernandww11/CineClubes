@@ -35,4 +35,3 @@ function uploadArquivo($arquivo, $destino) {
     return false;
 }
 ?>
-
