@@ -243,30 +243,41 @@ function obterCorTipo($tipo) {
             font-weight: 600;
             font-size: 0.8rem;
         }
+
+
+        .carrossel-container {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .carrossel-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .prev-btn, .next-btn, .close-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+        .close-btn { top: 10px; right: 10px; transform: none; }
+
     </style>
 </head>
 <body>
-    <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="home.html">INÍCIO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">SOBRE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">ACESSO</a>
-                    </li>
-
-                </ul>
-                
-            </div>
     <div class="container">
         <div class="container-main">
             <h1 class="header-title">
@@ -389,23 +400,26 @@ function obterCorTipo($tipo) {
                                     
                                     <?php if ($acao['galeria_fotos']): ?>
                                         <div class="mt-3">
-                                            <strong><i class="fas fa-images me-2"></i>Galeria de Fotos:</strong>
-                                            <div class="gallery-container">
+                                            <button id="btnGaleria-<?php echo $acao['id']; ?>">FOTOS DO EVENTO</button>
+
+                                            <!-- Carrossel oculto inicialmente -->
+                                            <div id="carrossel-<?php echo $acao['id']; ?>" class="carrossel-container" style="display:none;">
                                                 <?php 
                                                 $fotos = explode(',', $acao['galeria_fotos']);
-                                                foreach ($fotos as $foto): 
+                                                foreach ($fotos as $index => $foto): 
                                                     if (trim($foto)):
                                                 ?>
-                                                    <a href="uploads/galerias/<?php echo htmlspecialchars(trim($foto)); ?>" 
-                                                       data-lightbox="galeria-<?php echo $acao['id']; ?>"
-                                                       data-title="Galeria do evento">
+                                                    <div class="carrossel-slide" style="<?php echo $index === 0 ? '' : 'display:none;'; ?>">
                                                         <img src="uploads/galerias/<?php echo htmlspecialchars(trim($foto)); ?>" 
-                                                             alt="Foto da galeria" class="gallery-thumb">
-                                                    </a>
+                                                            alt="Foto da galeria" class="carrossel-img">
+                                                    </div>
                                                 <?php 
                                                     endif;
                                                 endforeach; 
                                                 ?>
+                                                <button class="prev-btn">⬅</button>
+                                                <button class="next-btn">➡</button>
+                                                <button class="close-btn">✖</button>
                                             </div>
                                         </div>
                                     <?php endif; ?>
@@ -423,7 +437,7 @@ function obterCorTipo($tipo) {
             </div>
         </div>
     </div>
-    
+    <script src="js/carrossel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
     <script src="js/galeria.js"></script>
