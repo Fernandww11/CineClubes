@@ -79,205 +79,47 @@ function obterCorTipo($tipo) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .container-main {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            margin: 2rem auto;
-            padding: 2rem;
-        }
-        
-        .header-title {
-            color: #4a5568;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .header-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-        
-        .action-card {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            background: white;
-            margin-bottom: 2rem;
-        }
-        
-        .action-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-header-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border: none;
-        }
-        
-        .card-body-custom {
-            padding: 2rem;
-        }
-        
-        .badge-tipo {
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            font-weight: 600;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            background: rgba(102, 126, 234, 0.05);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .info-item:hover {
-            background: rgba(102, 126, 234, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-right: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 12px;
-            padding: 12px 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-        
-        .gallery-container {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        
-        .gallery-thumb {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid transparent;
-        }
-        
-        .gallery-thumb:hover {
-            transform: scale(1.1);
-            border-color: #667eea;
-        }
-        
-        .capa-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 1rem;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: #718096;
-        }
-        
-        .empty-state i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        
-        .campus-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: #4a5568;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-
-        .carrossel-container {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .carrossel-img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .prev-btn, .next-btn, .close-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 4px;
-        }
-
-        .prev-btn { left: 10px; }
-        .next-btn { right: 10px; }
-        .close-btn { top: 10px; right: 10px; transform: none; }
-
+        @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
     </style>
 </head>
 <body>
+     <!-- Navigation -->
+     <nav class="navbar navbar-expand-lg navbar-dark  border-secondary">
+        <div class="container">
+<div class="navbar-brand d-flex align-items-center">
+    <a class="nav-link active" href="home.html"><img src="https://uploads.onecompiler.io/43vms4uzs/43vmrkwnq/favicon_white.png" alt="Logo Cine IFMG" style="height:48px;"></a>
+</div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html">INÍCIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre.html">SOBRE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">ACESSO</a>
+                    </li>
+
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="container-main">
             <h1 class="header-title">
