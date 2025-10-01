@@ -1,121 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
+    <!-- Cabeçalho / Metadados e CSS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine IFMG - Sobre</title>
+    <title>Ações Cadastradas - Sistema de Ações</title>
+    
+    <!-- Bootstrap / FontAwesome / Lightbox -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Estilo Customizado -->
     <link rel="stylesheet" href="styles.css">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap');
-  </style>
-    <style>
-        :root{
-  --bg:#0b0b0c;           /* preto bem escuro */
-  --panel:#0f1113;        /* painel escuro */
-  --card:#111418;         /* cartão */
-  --muted:#9aa2a6;        /* texto secundário */
-  --accent:#e50914;       /* vermelho Netflix-like */
-  --glass: rgba(255,255,255,0.03);
-}
-
-body{ background: var(--bg); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-
-.carousel {
-  display: flex;
-  gap: 2.5rem;   /* AQUI aumenta o espaço entre os cards */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 8px;
-}
-
-/* Cartões iguais ao que mandei antes */
-.card-item {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  min-width: 400px;
-  max-width: 300px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.7);
-  scroll-snap-align: start;
-  transition: transform .25s ease, box-shadow .25s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-    </style>
+      @import url('https://fonts.googleapis.com/css2?family=Bungee&family=New+Amsterdam&family=Staatliches&display=swap');
+      </style>
+  
 </head>
-<body class="bg-dark text-white">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark  border-secondary">
-        <div class="container">
+<body>
+
+ <!-- Navigation -->
+ <nav class="navbar navbar-expand-lg navbar-dark  border-secondary">
+  <div class="container">
 <div class="navbar-brand d-flex align-items-center">
-    <a class="nav-link active" href="home.html"><img src="https://uploads.onecompiler.io/43vms4uzs/43vmrkwnq/favicon_white.png" alt="Logo Cine IFMG" style="height:48px;"></a>
+<a class="nav-link active" href="home.html"><img src="https://uploads.onecompiler.io/43vms4uzs/43vmrkwnq/favicon_white.png" alt="Logo Cine IFMG" style="height:48px;"></a>
 </div>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="home.html">INÍCIO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">SOBRE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">ACESSO</a>
-                    </li>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="home.html">INÍCIO</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link active" href="sobre.html">SOBRE</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="index.html">ACESSO</a>
+              </li>
 
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
+          </ul>
+          
+      </div>
+  </div>
+</nav>
 
-    <div class="container py-5">
-       <div class="carousel" id="carousel">
-  <!-- Card 1 -->
-  <article class="card-item">
-    <img src="img/IFneves.jpeg" alt="Ribeirão das Neves">
-    <div class="card-body">
-      <h5>RIBEIRÃO DAS NEVES</h5>
-      <p class="small mb-0">Coordenador: Prof. João Silva</p>
+  <!-- Conteúdo -->
+  <div class="container py-5">
+    <h2 class="display-6 fw-bold mb-4">CINECLUBES PARTICIPANTES</h2>
+
+    <div class="row">
+      <!-- Cards -->
+      <div class="col-6 col-md-3 cineclub-card">
+        <a href="cineclubes.php">
+          <img src="img/IFneves.jpeg" alt="Neves">
+        </a>
+        <h5>CINEVES DE FILMES</h5>
+        <p>Prof. João Silva</p>
+      </div>
+
+      <div class="col-6 col-md-3 cineclub-card">
+        <a href="cineclubes.php">
+          <img src="img/ifmg-ane-souz-ouro-preto.jpg" alt="Ouro Preto">
+        </a>
+        <h5>OURO PRETO</h5>
+        <p>Prof. Maria Santos</p>
+      </div>
+
+      <div class="col-6 col-md-3 cineclub-card">
+        <a href="cineclubes.php">
+          <img src="img/campus-ifmg3.jpg" alt="Betim">
+        </a>
+        <h5>BETIM</h5>
+        <p>prof. Carlos Oliveira</p>
+      </div>
     </div>
-  </article>
+  </div>
 
-  <!-- Card 2 -->
-  <article class="card-item">
-    <img src="img/ifmg-ane-souz-ouro-preto.jpg" alt="Ouro Preto">
-    <div class="card-body">
-      <h5>OURO PRETO</h5>
-      <p class="small mb-0">Coordenador: Prof. Maria Santos</p>
-    </div>
-  </article>
-
-  <!-- Card 3 -->
-  <article class="card-item">
-    <img src="img/campus-ifmg3.jpg" alt="Betim">
-    <div class="card-body">
-      <h5>BETIM</h5>
-      <p class="small mb-0">Coordenador: Prof. Carlos Oliveira</p>
-    </div>
-  </article>
-</div>
-
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

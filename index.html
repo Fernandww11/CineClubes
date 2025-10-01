@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine IFMG - Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="bg-dark text-white">
+    <head>
+        <!-- Cabeçalho / Metadados e CSS -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ações Cadastradas - Sistema de Ações</title>
+        
+        <!-- Bootstrap / FontAwesome / Lightbox -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
+    
+        <!-- Estilo Customizado -->
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bungee&family=New+Amsterdam&family=Staatliches&display=swap');
+        </style>
+        
+    </head>
+
+ <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark  border-secondary">
         <div class="container">
 <div class="navbar-brand d-flex align-items-center">
@@ -21,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="home.html">INÍCIO</a>
+                        <a class="nav-link" href="home.html">INÍCIO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
@@ -33,7 +45,7 @@
                         <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">ACESSO</a>
+                        <a class="nav-link active" href="index.html">ACESSO</a>
                     </li>
 
                 </ul>
@@ -42,6 +54,7 @@
         </div>
     </nav>
 
+ <!-- Login -->
     <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
         <div class="row h-100 w-100">
             <div class="col-lg-6 d-flex flex-column justify-content-center align-items-center p-5 h-100">
@@ -51,7 +64,8 @@
                         Ainda não tem uma conta? 
                         <a href="register.html" class="text-success">Registre-se</a>
                     </p>
-                    
+
+<!-- Formulario -->                  
                     <form id="loginForm">
                         <div class="mb-3">
                             <input type="email" class="form-control form-control-lg" placeholder="Email" required>
@@ -70,6 +84,7 @@
         </div>
     </div>
 
+ <!-- Java -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
