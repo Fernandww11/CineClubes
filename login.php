@@ -33,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="home.html">INÍCIO</a>
+                        <a class="nav-link" href="inicio.php">INÍCIO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="cineclubes.php">CINECLUBES</a>
@@ -45,7 +45,7 @@
                         <a class="nav-link " href="cadAcao.php">CADASTRAR EVENTO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">ACESSO</a>
+                        <a class="nav-link active" href="login.php">ACESSO</a>
                     </li>
 
                 </ul>
@@ -62,7 +62,7 @@
                     <h1 class="display-4 fw-bold mb-4">LOGIN</h1>
                     <p class="mb-4">
                         Ainda não tem uma conta? 
-                        <a href="register.html" class="text-success">Registre-se</a>
+                        <a href="login.php" class="text-success">Registre-se</a>
                     </p>
 
 <!-- Formulario -->                  

@@ -162,11 +162,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <!-- Links do Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="home.html">INÍCIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inicio.php">INÍCIO</a></li>
                     <li class="nav-item"><a class="nav-link" href="cineclubes.php">CINECLUBES</a></li>
                     <li class="nav-item"><a class="nav-link" href="sobre.html">SOBRE</a></li>
                     <li class="nav-item"><a class="nav-link active" href="cadAcao.php">CADASTRAR EVENTO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html">ACESSO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.php">ACESSO</a></li>
                 </ul>
             </div>
         </div>
