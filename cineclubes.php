@@ -94,8 +94,157 @@ function obterCorTipo($tipo) {
     <!-- Estilo Customizado -->
     <link rel="stylesheet" href="styles.css">
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Bungee&family=New+Amsterdam&family=Staatliches&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bungee&family=New+Amsterdam&family=Staatliches&display=swap' );
+    
+    /* CSS para padronizar as imagens de capa */
+    .capa-image {
+        width: 100%;
+        height: 180px; /* Altura fixa para padronizar */
+        object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    
+    /* Estilos do Carrossel */
+    .carrossel-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+    .carrossel-slide {
+        display: none;
+        text-align: center;
+    }
+    .carrossel-slide.active {
+        display: block;
+    }
+    .carrossel-img {
+        width: 100%;
+        height: 250px; /* Altura fixa para as imagens da galeria */
+        object-fit: cover;
+    }
+    .carrossel-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .carrossel-nav-btn.prev { left: 0; border-radius: 0 5px 5px 0; }
+    .carrossel-nav-btn.next { right: 0; border-radius: 5px 0 0 5px; }
+    .slide-indicator {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 0.8rem;
+        color: #6c757d;
+    }
+    
+    /* Estilo Verde Neon para as informações das ações */
+    .info-item strong {
+        color: #39FF14; /* Verde Neon */
+        text-shadow: 0 0 5px #39FF14; /* Efeito neon sutil */
+    }
+    .info-item div {
+        color: #90EE90; /* Um verde mais claro para o valor */
+    }
     </style>
+
+    <!-- Script de Confirmação de Exclusão e Lógica do Carrossel -->
+    <script>
+    function confirmarExclusao(id) {
+        if (confirm("Tem certeza que deseja excluir esta ação? Esta ação é irreversível.")) {
+            window.location.href = 'excluir_acao.php?id=' + id;
+        }
+    }
+    
+    // Lógica do Carrossel
+    function showSlide(containerId, n) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        const slides = container.querySelectorAll('.carrossel-slide');
+        if (slides.length === 0) return;
+
+        let currentSlideIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+        
+        // Se não encontrar o ativo, usa o primeiro
+        if (currentSlideIndex === -1) {
+             currentSlideIndex = 0;
+             slides[0].classList.add('active');
+        }
+
+        // Calcula o novo índice
+        let newIndex = currentSlideIndex + n;
+
+        // Lógica de loop
+        if (newIndex >= slides.length) { newIndex = 0; }
+        if (newIndex < 0) { newIndex = slides.length - 1; }
+
+        // Esconde todos e mostra o novo
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[newIndex].classList.add('active');
+
+        // Atualiza o indicador
+        const indicator = document.getElementById('indicator-' + containerId.split('-')[1]);
+        if (indicator) {
+            indicator.textContent = (newIndex + 1) + ' de ' + slides.length;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa todos os carrosséis
+        document.querySelectorAll('.carrossel-container').forEach(container => {
+            const id = container.id.split('-')[1];
+            const slides = container.querySelectorAll('.carrossel-slide');
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+                
+                // Adiciona os event listeners para os botões de navegação
+                const prevBtn = document.getElementById('prev-' + id);
+                const nextBtn = document.getElementById('next-' + id);
+                
+                if(prevBtn) {
+                    prevBtn.addEventListener('click', () => showSlide(container.id, -1));
+                }
+                if(nextBtn) {
+                    nextBtn.addEventListener('click', () => showSlide(container.id, 1));
+                }
+                
+                // Inicializa o indicador
+                const indicator = document.getElementById('indicator-' + id);
+                if (indicator) {
+                    indicator.textContent = '1 de ' + slides.length;
+                }
+            }
+        });
+        
+        // Lógica para mostrar/esconder o carrossel ao clicar no botão
+        document.querySelectorAll('[id^="btnGaleria-"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.id.split('-')[1];
+                const carrossel = document.getElementById('carrossel-' + id);
+                const indicator = document.getElementById('indicator-' + id);
+                
+                if (carrossel) {
+                    const isHidden = carrossel.style.display === 'none' || carrossel.style.display === '';
+                    carrossel.style.display = isHidden ? 'block' : 'none';
+                    if (indicator) indicator.style.display = isHidden ? 'block' : 'none';
+                    this.textContent = isHidden ? 'ESCONDER FOTOS' : 'FOTOS DO EVENTO';
+                    
+                    // Garante que o primeiro slide esteja ativo ao abrir
+                    if (isHidden) {
+                        showSlide(carrossel.id, 0); 
+                    }
+                }
+            });
+        });
+    });
+    </script>
 
 </head>
 <body>
@@ -144,7 +293,7 @@ function obterCorTipo($tipo) {
             </div>
             
             <!-- Mensagens de Feedback -->
-            <?php if ($mensagem): ?>
+            <?php if ($mensagem ): ?>
                 <div class="alert alert-<?php echo $tipo_mensagem; ?> alert-dismissible fade show" role="alert">
                     <i class="fas fa-<?php echo $tipo_mensagem == 'success' ? 'check-circle' : 'exclamation-triangle'; ?> me-2"></i>
                     <?php echo $mensagem; ?>
@@ -210,25 +359,29 @@ function obterCorTipo($tipo) {
                                     <!-- Coordenador -->
                                     <div class="info-item">
                                         <div class="info-icon"><i class="fas fa-user"></i></div>
-                                        <div><strong>Coordenador:</strong><br><?php echo htmlspecialchars($acao['nome_coordenador']); ?></div>
+                                        <div><strong>Coordenador:</strong>  
+<?php echo htmlspecialchars($acao['nome_coordenador']); ?></div>
                                     </div>
                                     
                                     <!-- Local -->
                                     <div class="info-item">
                                         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                                        <div><strong>Local:</strong><br><?php echo htmlspecialchars($acao['local_evento']); ?></div>
+                                        <div><strong>Local:</strong>  
+<?php echo htmlspecialchars($acao['local_evento']); ?></div>
                                     </div>
                                     
                                     <!-- Data -->
                                     <div class="info-item">
                                         <div class="info-icon"><i class="fas fa-calendar"></i></div>
-                                        <div><strong>Data:</strong><br><?php echo formatarData($acao['data_evento']); ?></div>
+                                        <div><strong>Data:</strong>  
+<?php echo formatarData($acao['data_evento']); ?></div>
                                     </div>
                                     
                                     <!-- Horário -->
                                     <div class="info-item">
                                         <div class="info-icon"><i class="fas fa-clock"></i></div>
-                                        <div><strong>Horário:</strong><br>
+                                        <div><strong>Horário:</strong>  
+
                                             <?php echo formatarHorario($acao['horario_inicial']); ?> às 
                                             <?php echo formatarHorario($acao['horario_final']); ?>
                                         </div>
@@ -237,65 +390,55 @@ function obterCorTipo($tipo) {
                                     <!-- Descrição -->
                                     <div class="info-item">
                                         <div class="info-icon"><i class="fas fa-align-left"></i></div>
-                                        <div><strong>Descrição:</strong><br><?php echo nl2br(htmlspecialchars($acao['descricao'])); ?></div>
+                                        <div><strong>Descrição:</strong>  
+<?php echo nl2br(htmlspecialchars($acao['descricao'])); ?></div>
                                     </div>
                                     
                                     <!-- Galeria de Fotos -->
-                                    <?php if ($acao['galeria_fotos']): ?>
+                                    <?php if ($acao['galeria_fotos']): 
+                                        $fotos = explode(',', $acao['galeria_fotos']);
+                                        $fotos = array_filter($fotos, 'trim'); // Remove entradas vazias
+                                        if (count($fotos) > 0):
+                                    ?>
                                         <div class="mt-3">
-                                            <button id="btnGaleria-<?php echo $acao['id']; ?>">FOTOS DO EVENTO</button>
+                                            <button id="btnGaleria-<?php echo $acao['id']; ?>" class="btn btn-sm btn-info w-100 mb-2">FOTOS DO EVENTO</button>
                                             <div id="carrossel-<?php echo $acao['id']; ?>" class="carrossel-container" style="display:none;">
-                                                <?php 
-                                                $fotos = explode(',', $acao['galeria_fotos']);
-                                                foreach ($fotos as $index => $foto): 
-                                                    if (trim($foto)):
-                                                ?>
-                                                    <div class="carrossel-slide" style="<?php echo $index === 0 ? '' : 'display:none;'; ?>">
+                                                
+                                                <?php foreach ($fotos as $index => $foto): ?>
+                                                    <div class="carrossel-slide <?php echo $index === 0 ? 'active' : ''; ?>">
                                                         <img src="uploads/galerias/<?php echo htmlspecialchars(trim($foto)); ?>" 
-                                                            alt="Foto da galeria" class="carrossel-img">
+                                                            alt="Foto da galeria <?php echo $index + 1; ?>" class="carrossel-img">
                                                     </div>
-                                                <?php 
-                                                    endif;
-                                                endforeach; 
-                                                ?>
-                                                <button class="prev-btn">⬅</button>
-                                                <button class="next-btn">➡</button>
-                                                <button class="close-btn">✖</button>
+                                                <?php endforeach; ?>
+                                                
+                                                <!-- Botões de Navegação -->
+                                                <?php if (count($fotos) > 1): ?>
+                                                    <button id="prev-<?php echo $acao['id']; ?>" class="carrossel-nav-btn prev">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </button>
+                                                    <button id="next-<?php echo $acao['id']; ?>" class="carrossel-nav-btn next">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </button>
+                                                <?php endif; ?>
+                                                
                                             </div>
+                                            <div id="indicator-<?php echo $acao['id']; ?>" class="slide-indicator" style="display:none;"></div>
                                         </div>
-                                    <?php endif; ?>
-                                </div> <!-- fim card-body -->
-                            </div> <!-- fim card -->
-                        </div> <!-- fim coluna -->
+                                    <?php endif; endif; ?>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
                     <?php endforeach; ?>
-                </div> <!-- fim row -->
+                </div>
             <?php endif; ?>
-            
-           
-            <div class="text-center mt-4">
-                <a href="cadAcao.php" class="btn btn-primary btn-lg">
-                    <i class="fas fa-arrow-left me-2"></i>Voltar ao Cadastro
-                </a>
-            </div>
         </div>
     </div>
 
-    <!-- Scripts JS -->
-    <script src="js/carrossel.js"></script>
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Lightbox JS -->
     <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/js/lightbox.min.js"></script>
-    <script src="js/galeria.js"></script>
-    
-    <!-- Fechar alertas automaticamente após 5s -->
-    <script>
-        setTimeout(function() {
-            const alerts = document.querySelectorAll('.alert');
-            alerts.forEach(function(alert) {
-                const bsAlert = new bootstrap.Alert(alert);
-                bsAlert.close();
-            });
-        }, 5000);
-    </script>
 </body>
 </html>
-
