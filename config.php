@@ -5,6 +5,13 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'sistema_acoes');
 
+// Função para iniciar a sessão de forma segura
+function iniciarSessao() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+}
+
 // Função para conectar ao banco de dados
 function conectarBanco() {
     try {
