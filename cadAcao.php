@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-    <!-- Popup de senha 
+
     <div id="bloqueioSenha" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:9999;">
         <div style="background:white; padding:2rem; border-radius:10px; text-align:center; max-width:400px; width:90%;">
             <h3>Digite a senha</h3>
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p id="erroSenha" style="color:red; display:none; margin-top:0.5rem;">Senha incorreta!</p>
         </div>
     </div>
-    -->
+    
 
      <!-- Barra de Navegação -->
      <nav class="navbar navbar-expand-lg navbar-dark border-secondary">

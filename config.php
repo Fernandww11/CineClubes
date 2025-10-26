@@ -16,6 +16,7 @@ function conectarBanco() {
     }
 }
 
+
 // Função para upload de arquivos
 function uploadArquivo($arquivo, $destino) {
     $extensoesPermitidas = ['jpg', 'jpeg', 'png', 'gif'];

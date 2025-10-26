@@ -3,7 +3,7 @@ require_once 'config.php';
 
 // Verificar se foi enviado um ID válido
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header('Location: visualizar.php?erro=id_invalido');
+    header('Location: cadAcao.php?erro=id_invalido');
     exit;
 }
 
@@ -19,7 +19,7 @@ try {
     $acao = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if (!$acao) {
-        header('Location: visualizar.php?erro=acao_nao_encontrada');
+        header('Location: cadAcao.php?erro=acao_nao_encontrada');
         exit;
     }
     
@@ -44,11 +44,11 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_acao]);
     
-    header('Location: visualizar.php?sucesso=acao_excluida');
+    header('Location: cadAcao.php?sucesso=acao_excluida');
     exit;
     
 } catch (Exception $e) {
-    header('Location: visualizar.php?erro=erro_exclusao&msg=' . urlencode($e->getMessage()));
+    header('Location:  cadAcao.php?erro=erro_exclusao&msg=' . urlencode($e->getMessage()));
     exit;
 }
 ?>

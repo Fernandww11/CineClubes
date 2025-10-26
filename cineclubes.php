@@ -35,8 +35,7 @@ if (isset($_GET['erro'])) {
 }
 
 
-// Da erro ao tentar abrir a pagina por não achar o banco acoes
-/*
+
 try {
     $pdo = conectarBanco();
     $sql = "SELECT * FROM acoes ORDER BY data_cadastro DESC";
@@ -46,7 +45,7 @@ try {
 } catch (Exception $e) {
     $erro = "Erro ao carregar ações: " . $e->getMessage();
 }
-*/
+
 
 
 // Funções Auxiliares de Formatação
@@ -272,7 +271,7 @@ function obterCorTipo($tipo) {
                 </div> <!-- fim row -->
             <?php endif; ?>
             
-            <!-- Botão Voltar (parece inutil ja que existe o botao de cadastrar nova ação para voltar pra tela)
+           
             <div class="text-center mt-4">
                 <a href="cadAcao.php" class="btn btn-primary btn-lg">
                     <i class="fas fa-arrow-left me-2"></i>Voltar ao Cadastro
@@ -280,7 +279,6 @@ function obterCorTipo($tipo) {
             </div>
         </div>
     </div>
-    -->
 
     <!-- Scripts JS -->
     <script src="js/carrossel.js"></script>
